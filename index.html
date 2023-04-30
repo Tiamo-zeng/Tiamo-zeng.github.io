@@ -247,7 +247,7 @@
             //列表
             getAll() {
                 //发送Ajax请求
-                axios.get("https://q.free.svipss.top/maven/books").then((res)=>{
+                axios.get("https://q.freehk.svipss.top/maven/books").then((res)=>{
                     this.dataList=res.data.data;
                 });
             },
@@ -266,7 +266,7 @@
             //添加
             handleAdd () {
                 //发送Ajax请求
-                axios.post("https://q.free.svipss.top/maven/books/",this.formData).then((res)=>{
+                axios.post("https://q.freehk.svipss.top/maven/books/",this.formData).then((res)=>{
                     console.log(res.data);
                     //如果操作成功，关闭弹层
                     if(res.data.code==20011){
@@ -289,7 +289,7 @@
             handleUpdate(row) {
                 //console.log(row);  //row.id 查询条件
                 //查询数据，更具id查询
-                axios.get("https://q.free.svipss.top/maven/books/"+row.id).then((res)=>{
+                axios.get("https://q.freehk.svipss.top/maven/books/"+row.id).then((res)=>{
                     //console.log(res.data.data);
                     if(res.data.code==20041){
                         //展示弹层，加载数据
@@ -304,7 +304,7 @@
             //编辑
             handleEdit() {
                 //发送put请求
-                axios.put("https://q.free.svipss.top/maven/books/",this.formData).then((res)=>{
+                axios.put("https://q.freehk.svipss.top/maven/books/",this.formData).then((res)=>{
                     //如果操作成功，关闭弹层
                     if(res.data.code==20031){
                         this.dialogFormVisible4Edit=false;
@@ -329,7 +329,7 @@
                     type:'info'
                 }).then(()=>{
                     //2.做删除业务
-                    axios.delete("https://q.free.svipss.top/maven/books/"+row.id).then((res)=>{
+                    axios.delete("https://q.freehk.svipss.top/maven/books/"+row.id).then((res)=>{
                         if(res.data.code == 20021){
                             this.$message.success("删除成功!");
                         }else{

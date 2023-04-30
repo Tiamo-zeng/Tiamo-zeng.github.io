@@ -105,10 +105,10 @@
         <profile>
             <id>env_dep</id>
             <properties>
-                <jdbc.url>jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=UTF-8</jdbc.url>
+                <jdbc.url>jdbc:mysql://localhost:3306/test?useSSL=false&amp;serverTimezone=UTC</jdbc.url>
                 <jdbc.driver>com.mysql.jdbc.Driver</jdbc.driver>
                 <jdbc.username>root</jdbc.username>
-                <jdbc.password>123456</jdbc.password>
+                <jdbc.password>12345678</jdbc.password>
             </properties>
             <!--设定是否为默认启动环境-->
             <activation>
