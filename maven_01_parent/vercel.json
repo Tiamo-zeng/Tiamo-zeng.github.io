@@ -1,0 +1,20 @@
+{
+  "name": "maven_01_parent",
+  "version": 2,
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/$1",
+      "headers": {
+        "Cache-Control": "s-maxage=1, stale-while-revalidate"
+      }
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "http://localhost:8080/$1"
+    }
+  ],
+  "env": {
+    "PORT": "3000"
+  }
+}
