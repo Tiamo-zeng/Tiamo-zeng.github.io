@@ -19,7 +19,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>后台管理</title>
+    <title>数据管理</title>
 
     <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
 
@@ -40,7 +40,7 @@
 
     <div class="content-header">
 
-        <h1>图书管理</h1>
+        <h1>后台数据管理</h1>
 
     </div>
 
@@ -50,7 +50,7 @@
 
             <div class="filter-container">
 
-                <el-input placeholder="图书名称" v-model="pagination.queryString" style="width: 200px;" class="filter-item"></el-input>
+                <el-input placeholder="商品名称" v-model="pagination.queryString" style="width: 200px;" class="filter-item"></el-input>
 
                 <el-button @click="getAll()" class="dalfBut">查询</el-button>
 
@@ -62,9 +62,9 @@
 
                 <el-table-column type="index" align="center" label="序号"></el-table-column>
 
-                <el-table-column prop="type" label="图书类别" align="center"></el-table-column>
+                <el-table-column prop="type" label="商品类别" align="center"></el-table-column>
 
-                <el-table-column prop="name" label="图书名称" align="center"></el-table-column>
+                <el-table-column prop="name" label="商品名称" align="center"></el-table-column>
 
                 <el-table-column prop="description" label="描述" align="center"></el-table-column>
 
@@ -86,7 +86,7 @@
 
             <div class="add-form">
 
-                <el-dialog title="新增图书" :visible.sync="dialogFormVisible">
+                <el-dialog title="新增商品" :visible.sync="dialogFormVisible">
 
                     <el-form ref="dataAddForm" :model="formData" :rules="rules" label-position="right" label-width="100px">
 
@@ -94,7 +94,7 @@
 
                             <el-col :span="12">
 
-                                <el-form-item label="图书类别" prop="type">
+                                <el-form-item label="商品类别" prop="type">
 
                                     <el-input v-model="formData.type"/>
 
@@ -104,7 +104,7 @@
 
                             <el-col :span="12">
 
-                                <el-form-item label="图书名称" prop="name">
+                                <el-form-item label="商品名称" prop="name">
 
                                     <el-input v-model="formData.name"/>
 
@@ -155,7 +155,7 @@
 
                             <el-col :span="12">
 
-                                <el-form-item label="图书类别" prop="type">
+                                <el-form-item label="商品类别" prop="type">
 
                                     <el-input v-model="formData.type"/>
 
@@ -165,7 +165,7 @@
 
                             <el-col :span="12">
 
-                                <el-form-item label="图书名称" prop="name">
+                                <el-form-item label="商品名称" prop="name">
 
                                     <el-input v-model="formData.name"/>
 
@@ -233,8 +233,8 @@
             dialogFormVisible: false,//控制表单是否可见
             dialogFormVisible4Edit:false,//编辑表单是否可见
             rules: {//校验规则
-                type: [{ required: true, message: '图书类别为必填项', trigger: 'blur' }],
-                name: [{ required: true, message: '图书名称为必填项', trigger: 'blur' }]
+                type: [{ required: true, message: '商品类别为必填项', trigger: 'blur' }],
+                name: [{ required: true, message: '商品名称为必填项', trigger: 'blur' }]
             }
         },
 
@@ -247,7 +247,7 @@
             //列表
             getAll() {
                 //发送Ajax请求
-                axios.get("https://q.freehk.svipss.top/maven/books").then((res)=>{
+                axios.get("http://localhost:8080/maven/books").then((res)=>{
                     this.dataList=res.data.data;
                 });
             },
@@ -266,7 +266,7 @@
             //添加
             handleAdd () {
                 //发送Ajax请求
-                axios.post("https://q.freehk.svipss.top/maven/books/",this.formData).then((res)=>{
+                axios.post("http://localhost:8080/maven/books/",this.formData).then((res)=>{
                     console.log(res.data);
                     //如果操作成功，关闭弹层
                     if(res.data.code==20011){
@@ -289,7 +289,7 @@
             handleUpdate(row) {
                 //console.log(row);  //row.id 查询条件
                 //查询数据，更具id查询
-                axios.get("https://q.freehk.svipss.top/maven/books/"+row.id).then((res)=>{
+                axios.get("http://localhost:8080/maven/books/"+row.id).then((res)=>{
                     //console.log(res.data.data);
                     if(res.data.code==20041){
                         //展示弹层，加载数据
@@ -304,7 +304,7 @@
             //编辑
             handleEdit() {
                 //发送put请求
-                axios.put("https://q.freehk.svipss.top/maven/books/",this.formData).then((res)=>{
+                axios.put("http://localhost:8080/maven/books/",this.formData).then((res)=>{
                     //如果操作成功，关闭弹层
                     if(res.data.code==20031){
                         this.dialogFormVisible4Edit=false;
@@ -329,7 +329,7 @@
                     type:'info'
                 }).then(()=>{
                     //2.做删除业务
-                    axios.delete("https://q.freehk.svipss.top/maven/books/"+row.id).then((res)=>{
+                    axios.delete("http://localhost:8080/maven/books/"+row.id).then((res)=>{
                         if(res.data.code == 20021){
                             this.$message.success("删除成功!");
                         }else{
