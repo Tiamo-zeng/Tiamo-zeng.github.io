@@ -54,7 +54,10 @@
 
                 <el-button @click="getAll()" class="dalfBut">查询</el-button>
 
+                <el-button @click="getAl()" class="dalfBut">隐藏</el-button>
+
                 <el-button type="primary" class="butT" @click="handleCreate()">新建</el-button>
+                
 
             </div>
 
@@ -165,7 +168,7 @@
 
                             <el-col :span="12">
 
-                                <el-form-item label="店铺名称" prop="name">
+                                <el-form-item label="商品名称" prop="name">
 
                                     <el-input v-model="formData.name"/>
 
@@ -233,8 +236,8 @@
             dialogFormVisible: false,//控制表单是否可见
             dialogFormVisible4Edit:false,//编辑表单是否可见
             rules: {//校验规则
-                type: [{ required: true, message: '商品类别为必填项', trigger: 'blur' }],
-                name: [{ required: true, message: '商品名称为必填项', trigger: 'blur' }]
+                type: [{ required: true, message: '联系方式为必填项', trigger: 'blur' }],
+                name: [{ required: true, message: '店铺名称为必填项', trigger: 'blur' }]
             }
         },
 
@@ -252,6 +255,15 @@
                     this.dataList=res.data.data;
                 });
             },
+
+
+            getAl() {
+                //发送Ajax请求
+                axios.get("https://tiamo-zeng.github.io/").then((res)=>{
+                    this.dataList=res.data.data;
+                });
+            },
+
 
             //弹出添加窗口
             handleCreate() {
