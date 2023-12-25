@@ -302,7 +302,7 @@
             handleUpdate(row) {
                 //console.log(row);  //row.id 查询条件
                 //查询数据，更具id查询
-                axios.get("https://54741v96e8.goho.co/maven/books/"+row.id).then((res)=>{
+                axios.get("https://54741v96e8.goho.co/maven/books"+row.id).then((res)=>{
                     //console.log(res.data.data);
                     if(res.data.code==20041){
                         //展示弹层，加载数据
