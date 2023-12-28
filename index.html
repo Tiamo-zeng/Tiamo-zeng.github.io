@@ -251,7 +251,7 @@
             //列表
             getAll() {
                 //发送Ajax请求
-                axios.get("https://te.zssmh.asia/maven/books").then((res)=>{
+                axios.get("https://te.zssmh.asia/").then((res)=>{
                     this.dataList=res.data.data;
                 });
             },
