@@ -58,6 +58,7 @@
 
                 <el-button type="primary" class="butT" @click="handleCreate()">新建</el-button>
 
+                <el-button @click="getA()" class="dalfBut">退出</el-button>
 
             </div>
 
@@ -244,7 +245,7 @@
         //钩子函数，VUE对象初始化完成后自动执行
         created() {
             //第一次打开网页不自动查询所有数据
-            //this.getAll();
+            this.getAll();
         },
 
         methods: {
@@ -259,7 +260,14 @@
 
             getAl() {
                 //发送Ajax请求
-                axios.get("https://tiamo-zeng.github.io/").then((res)=>{
+                axios.get("https://tiamo-zeng.github.io/login.html").then((res)=>{
+                    this.dataList=res.data.data;
+                });
+            },
+
+            getAl() {
+                //发送Ajax请求
+                axios.get("https://tiamo-zeng.github.io").then((res)=>{
                     this.dataList=res.data.data;
                 });
             },
