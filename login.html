@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- 页面meta -->
+
+  <meta charset="utf-8">
+
+  <meta charset="utf-8" />
+  <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="yes" name="apple-touch-fullscreen">
+  <meta content="black" name="apple-mobile-web-app-status-bar-style">
+  <meta content="320" name="MobileOptimized">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes"/>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>数据管理登录</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      width: 300px;
+      margin: 0 auto;
+      margin-top: 100px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .container label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .container input[type="text"],
+    .container input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      transition: border-color 0.3s;
+    }
+
+    .container input[type="text"]:focus,
+    .container input[type="password"]:focus {
+      border-color: dodgerblue;
+      outline: none;
+    }
+
+    .container input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
+      background-color: dodgerblue;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .container input[type="submit"]:hover {
+      background-color: #2196f3;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>数据管理登录</h2>
+  <form action="https://tiamo-zeng.github.io" method="post">
+    <label for="username">用户名</label>
+    <input type="text" id="username" name="username" required>
+
+    <label for="password">密码</label>
+    <input type="password" id="password" name="password" required>
+
+    <input type="submit" value="登录" onclick="login()">
+  </form>
+</div>
+</body>
+</html>
