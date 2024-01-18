@@ -58,7 +58,7 @@
 
                 <el-button type="primary" class="butT" @click="handleCreate()">新建</el-button>
 
-                <el-button @click="getA()" class="dalfBut">退出</el-button>
+                <a href="https://tiamo-zeng.github.io">退出</a>
 
             </div>
 
@@ -264,14 +264,6 @@
                     this.dataList=res.data.data;
                 });
             },
-
-            getA() {
-                //发送Ajax请求
-                axios.get("https://tiamo-zeng.github.io/index.html").then((res)=>{
-                    this.dataList=res.data.data;
-                });
-            },
-
 
             //弹出添加窗口
             handleCreate() {
