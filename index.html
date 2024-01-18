@@ -1,362 +1,91 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
+  <!-- 页面meta -->
 
-    <!-- 页面meta -->
+  <meta charset="utf-8">
 
-    <meta charset="utf-8">
-    
-    <meta charset="utf-8" />
-    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport">
-    <meta content="yes" name="apple-mobile-web-app-capable">
-    <meta content="yes" name="apple-touch-fullscreen">
-    <meta content="black" name="apple-mobile-web-app-status-bar-style">
-    <meta content="320" name="MobileOptimized">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes"/>
+  <meta charset="utf-8" />
+  <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="yes" name="apple-touch-fullscreen">
+  <meta content="black" name="apple-mobile-web-app-status-bar-style">
+  <meta content="320" name="MobileOptimized">
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes"/>
 
-    <title>数据管理</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+  <title>数据管理登录</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
 
-    <!-- 引入样式 -->
+    .container {
+      width: 300px;
+      margin: 0 auto;
+      margin-top: 100px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    }
 
-    <link rel="stylesheet" href="webapp/plugins/elementui/index.css">
+    .container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
 
-    <link rel="stylesheet" href="webapp/plugins/font-awesome/css/font-awesome.min.css">
+    .container label {
+      display: block;
+      margin-bottom: 10px;
+    }
 
-    <link rel="stylesheet" href="webapp/css/style.css">
-   
+    .container input[type="text"],
+    .container input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      transition: border-color 0.3s;
+    }
 
+    .container input[type="text"]:focus,
+    .container input[type="password"]:focus {
+      border-color: dodgerblue;
+      outline: none;
+    }
+
+    .container input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
+      background-color: dodgerblue;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .container input[type="submit"]:hover {
+      background-color: #2196f3;
+    }
+  </style>
 </head>
-
-<body class="hold-transition">
-
-<div id="app">
-
-    <div class="content-header">
-
-        <h1>后台数据管理</h1>
-
-    </div>
-
-    <div class="app-container">
-
-        <div class="box">
-
-            <div class="filter-container">
-
-                <el-input placeholder="店铺名称" v-model="pagination.queryString" style="width: 200px;" class="filter-item"></el-input>
-
-                <el-button @click="getAll()" class="dalfBut">查询</el-button>
-
-                <el-button @click="getAl()" class="dalfBut">隐藏</el-button>
-
-                <el-button type="primary" class="butT" @click="handleCreate()">新建</el-button>
-                
-
-            </div>
-
-            <el-table size="small" current-row-key="id" :data="dataList" stripe highlight-current-row>
-
-                <el-table-column type="index" align="center" label="序号"></el-table-column>
-
-                <el-table-column prop="type" label="联系方式" align="center"></el-table-column>
-
-                <el-table-column prop="name" label="店铺名称" align="center"></el-table-column>
-
-                <el-table-column prop="description" label="描述" align="center"></el-table-column>
-
-                <el-table-column label="操作" align="center">
-
-                    <template slot-scope="scope">
-
-                        <el-button type="primary" size="mini" @click="handleUpdate(scope.row)">编辑</el-button>
-
-                        <el-button type="danger" size="mini" @click="handleDelete(scope.row)">删除</el-button>
-
-                    </template>
-
-                </el-table-column>
-
-            </el-table>
-
-            <!-- 新增标签弹层 -->
-
-            <div class="add-form">
-
-                <el-dialog title="新增商品" :visible.sync="dialogFormVisible">
-
-                    <el-form ref="dataAddForm" :model="formData" :rules="rules" label-position="right" label-width="100px">
-
-                        <el-row>
-
-                            <el-col :span="12">
-
-                                <el-form-item label="联系方式" prop="type">
-
-                                    <el-input v-model="formData.type"/>
-
-                                </el-form-item>
-
-                            </el-col>
-
-                            <el-col :span="12">
-
-                                <el-form-item label="店铺名称" prop="name">
-
-                                    <el-input v-model="formData.name"/>
-
-                                </el-form-item>
-
-                            </el-col>
-
-                        </el-row>
-
-
-                        <el-row>
-
-                            <el-col :span="24">
-
-                                <el-form-item label="描述">
-
-                                    <el-input v-model="formData.description" type="textarea"></el-input>
-
-                                </el-form-item>
-
-                            </el-col>
-
-                        </el-row>
-
-                    </el-form>
-
-                    <div slot="footer" class="dialog-footer">
-
-                        <el-button @click="dialogFormVisible = false">取消</el-button>
-
-                        <el-button type="primary" @click="handleAdd()">确定</el-button>
-
-                    </div>
-
-                </el-dialog>
-
-            </div>
-
-            <!-- 编辑标签弹层 -->
-
-            <div class="add-form">
-
-                <el-dialog title="编辑检查项" :visible.sync="dialogFormVisible4Edit">
-
-                    <el-form ref="dataEditForm" :model="formData" :rules="rules" label-position="right" label-width="100px">
-
-                        <el-row>
-
-                            <el-col :span="12">
-
-                                <el-form-item label="联系方式" prop="type">
-
-                                    <el-input v-model="formData.type"/>
-
-                                </el-form-item>
-
-                            </el-col>
-
-                            <el-col :span="12">
-
-                                <el-form-item label="商品名称" prop="name">
-
-                                    <el-input v-model="formData.name"/>
-
-                                </el-form-item>
-
-                            </el-col>
-
-                        </el-row>
-
-                        <el-row>
-
-                            <el-col :span="24">
-
-                                <el-form-item label="描述">
-
-                                    <el-input v-model="formData.description" type="textarea"></el-input>
-
-                                </el-form-item>
-
-                            </el-col>
-
-                        </el-row>
-
-                    </el-form>
-
-                    <div slot="footer" class="dialog-footer">
-
-                        <el-button @click="dialogFormVisible4Edit = false">取消</el-button>
-
-                        <el-button type="primary" @click="handleEdit()">确定</el-button>
-
-                    </div>
-
-                </el-dialog>
-
-            </div>
-
-        </div>
-
-    </div>
-
+<body>
+<div class="container">
+  <h2>数据管理登录</h2>
+  <form action="https://tiamo-zeng.github.io" method="post">
+    <label for="username">用户名</label>
+    <input type="text" id="username" name="username" required>
+
+    <label for="password">密码</label>
+    <input type="password" id="password" name="password" required>
+
+    <input type="submit" value="登录" onclick="login()">
+  </form>
 </div>
-
 </body>
-
-<!-- 引入组件库 -->
-
-<script src="webapp/js/vue.js"></script>
-
-<script src="webapp/plugins/elementui/index.js"></script>
-
-<script type="text/javascript" src="webapp/js/jquery.min.js"></script>
-
-<script src="webapp/js/axios-0.18.0.js"></script>
-
-<script>
-
-    var vue = new Vue({
-
-        el: '#app',
-        data:{
-            pagination: {},
-            dataList: [],//当前页要展示的列表数据
-            formData: {},//表单数据
-            dialogFormVisible: false,//控制表单是否可见
-            dialogFormVisible4Edit:false,//编辑表单是否可见
-            rules: {//校验规则
-                type: [{ required: true, message: '联系方式为必填项', trigger: 'blur' }],
-                name: [{ required: true, message: '店铺名称为必填项', trigger: 'blur' }]
-            }
-        },
-
-        //钩子函数，VUE对象初始化完成后自动执行
-        created() {
-            //第一次打开网页不自动查询所有数据
-            //this.getAll();
-        },
-
-        methods: {
-            //列表
-            getAll() {
-                //发送Ajax请求
-                axios.get("https://te.zssmh.asia/maven/books/").then((res)=>{
-                    this.dataList=res.data.data;
-                });
-            },
-
-
-            getAl() {
-                //发送Ajax请求
-                axios.get("https://tiamo-zeng.github.io/").then((res)=>{
-                    this.dataList=res.data.data;
-                });
-            },
-
-
-            //弹出添加窗口
-            handleCreate() {
-                this.dialogFormVisible=true;
-                this.resetForm();
-            },
-
-            //重置表单
-            resetForm() {
-                this.formData={};
-            },
-
-            //添加
-            handleAdd () {
-                //发送Ajax请求
-                axios.post("https://te.zssmh.asia/maven/books/",this.formData).then((res)=>{
-                    console.log(res.data);
-                    //如果操作成功，关闭弹层
-                    if(res.data.code==20011){
-                        this.dialogFormVisible=false;
-                        this.$message.success("添加成功")
-                        //显示数据
-                        this.getAll();
-                    }else if(res.data.code==20010){
-                        this.$message.error("添加失败");
-                    }else {
-                        this.$message.error(res.data.msg);
-                    }
-                }).finally(()=>{
-                    //显示数据
-                    //this.getAll();
-                });
-            },
-
-            //弹出编辑窗口
-            handleUpdate(row) {
-                //console.log(row);  //row.id 查询条件
-                //查询数据，更具id查询
-                axios.get("https://te.zssmh.asia/maven/books/"+row.id).then((res)=>{
-                    //console.log(res.data.data);
-                    if(res.data.code==20041){
-                        //展示弹层，加载数据
-                        this.formData = res.data.data;
-                        this.dialogFormVisible4Edit = true;
-                    }else {
-                        this.$message.error(res.data.msg);
-                    }
-                });
-            },
-
-            //编辑
-            handleEdit() {
-                //发送put请求
-                axios.put("https://te.zssmh.asia/maven/books/",this.formData).then((res)=>{
-                    //如果操作成功，关闭弹层
-                    if(res.data.code==20031){
-                        this.dialogFormVisible4Edit=false;
-                        this.$message.success("修改成功!")
-                        //显示数据
-                        this.getAll();
-                    }else if(res.data.code==20030){
-                        this.$message.error("修改失败!");
-                    }else {
-                        this.$message.error(res.data.msg);
-                    }
-                }).finally(()=>{
-                    //显示数据
-                    this.getAll();
-                });
-            },
-
-            // 删除
-            handleDelete(row) {
-                //1.弹出提示框
-                this.$confirm("此操作永久删除当前数据，是否继续？","提示",{
-                    type:'info'
-                }).then(()=>{
-                    //2.做删除业务
-                    axios.delete("https://te.zssmh.asia/maven/books/"+row.id).then((res)=>{
-                        if(res.data.code == 20021){
-                            this.$message.success("删除成功!");
-                        }else{
-                            this.$message.error("删除失败!");
-                        }
-                    }).finally(()=>{
-                        this.getAll();
-                    });
-                }).catch(()=>{
-                    //3.取消删除
-                    this.$message.info("取消删除操作!");
-                });
-            }
-        }
-    })
-</script>
 </html>
