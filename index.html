@@ -6,17 +6,32 @@
   <meta charset="utf-8">
 
   <meta charset="utf-8" />
-  <link rel="icon" href="./favicon.ico" type="image/x-icon">
   <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport">
   <meta content="yes" name="apple-mobile-web-app-capable">
   <meta content="yes" name="apple-touch-fullscreen">
   <meta content="black" name="apple-mobile-web-app-status-bar-style">
   <meta content="320" name="MobileOptimized">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes"/>
 
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <title>数据管理登录</title>
+  <script>
+    function validateForm() {
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+
+      // 在此处可以添加更复杂的验证逻辑，比如检查用户名和密码是否满足特定的要求
+
+      if (username === "admin" && password === "123456") {
+        //alert("登陆成功！");
+        window.location.href="./login.html";
+      } else {
+        alert("用户名或密码错误！");
+      }
+    }
+  </script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -77,15 +92,13 @@
 <body>
 <div class="container">
   <h2>数据管理登录</h2>
-  <form action="https://tiamo-zeng.github.io/login.html" method="get">
     <label for="username">用户名</label>
     <input type="text" id="username" name="username" required>
 
     <label for="password">密码</label>
     <input type="password" id="password" name="password" required>
 
-    <input type="submit" value="登录" onclick="login()">
-  </form>
+    <input type="submit" value="登录" onclick="validateForm()">
 </div>
 </body>
 </html>
