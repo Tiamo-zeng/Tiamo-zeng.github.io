@@ -52,7 +52,7 @@
 
             <div class="filter-container">
 
-                <el-input placeholder="店铺名称" v-model="pagination.queryString" style="width: 200px;" class="filter-item"></el-input>
+                <el-input placeholder="" v-model="pagination.queryString" style="width: 200px;" class="filter-item"></el-input>
 
                 <el-button @click="getAll()" class="dalfBut">查询</el-button>
 
@@ -68,11 +68,21 @@
 
                 <el-table-column type="index" align="center" label="序号"></el-table-column>
 
-                <el-table-column prop="type" label="联系方式" align="center"></el-table-column>
+                <el-table-column prop="name" label="分销软件" align="center"></el-table-column>
 
-                <el-table-column prop="name" label="店铺名称" align="center"></el-table-column>
+                <el-table-column prop="type" label="微信账号" align="center"></el-table-column>
 
-                <el-table-column prop="description" label="描述" align="center"></el-table-column>
+                <el-table-column prop="description" label="软件账号" align="center"></el-table-column>
+
+                <el-table-column prop="aa" label="微信备注名" align="center"></el-table-column>
+
+                <el-table-column prop="bd" label="商品ID" align="center"></el-table-column>
+
+                <el-table-column prop="ac" label="商品链接" align="center"></el-table-column>
+
+                <el-table-column prop="ab" label="商品主图" align="center"></el-table-column>
+
+                <el-table-column prop="ax" label="商品标题" align="center"></el-table-column>
 
                 <el-table-column label="操作" align="center">
 
@@ -100,7 +110,7 @@
 
                             <el-col :span="12">
 
-                                <el-form-item label="联系方式" prop="type">
+                                <el-form-item label="分销软件" prop="name">
 
                                     <el-input v-model="formData.type"/>
 
@@ -110,7 +120,7 @@
 
                             <el-col :span="12">
 
-                                <el-form-item label="店铺名称" prop="name">
+                                <el-form-item label="商品名称" prop="type">
 
                                     <el-input v-model="formData.name"/>
 
@@ -125,7 +135,7 @@
 
                             <el-col :span="24">
 
-                                <el-form-item label="描述">
+                                <el-form-item label="软件账号">
 
                                     <el-input v-model="formData.description" type="textarea"></el-input>
 
@@ -153,7 +163,7 @@
 
             <div class="add-form">
 
-                <el-dialog title="编辑检查项" :visible.sync="dialogFormVisible4Edit">
+                <el-dialog title="编辑信息" :visible.sync="dialogFormVisible4Edit">
 
                     <el-form ref="dataEditForm" :model="formData" :rules="rules" label-position="right" label-width="100px">
 
@@ -161,7 +171,7 @@
 
                             <el-col :span="12">
 
-                                <el-form-item label="联系方式" prop="type">
+                                <el-form-item label="分销软件" prop="name">
 
                                     <el-input v-model="formData.type"/>
 
@@ -171,7 +181,7 @@
 
                             <el-col :span="12">
 
-                                <el-form-item label="商品名称" prop="name">
+                                <el-form-item label="商品名称" prop="type">
 
                                     <el-input v-model="formData.name"/>
 
@@ -183,9 +193,9 @@
 
                         <el-row>
 
-                            <el-col :span="24">
+                            <el-col :span="12">
 
-                                <el-form-item label="描述">
+                                <el-form-item label="软件账号">
 
                                     <el-input v-model="formData.description" type="textarea"></el-input>
 
@@ -239,8 +249,8 @@
             dialogFormVisible: false,//控制表单是否可见
             dialogFormVisible4Edit:false,//编辑表单是否可见
             rules: {//校验规则
-                type: [{ required: true, message: '联系方式为必填项', trigger: 'blur' }],
-                name: [{ required: true, message: '店铺名称为必填项', trigger: 'blur' }]
+                type: [{ required: true, message: '必填项', trigger: 'blur' }],
+                name: [{ required: true, message: '必填项', trigger: 'blur' }]
             }
         },
 
