@@ -108,7 +108,7 @@
 
                         <el-row>
 
-                            <el-col :span="9">
+                            <el-col :span="7">
 
                                 <el-form-item label="分销软件" prop="name">
 
@@ -118,7 +118,7 @@
 
                             </el-col>
 
-                            <el-col :span="9">
+                            <el-col :span="7">
 
                                 <el-form-item label="微信账号" prop="type">
 
@@ -128,85 +128,65 @@
 
                             </el-col>
 
-                        </el-row>
 
-
-                        <el-row>
-
-                            <el-col :span="9">
+                            <el-col :span="7">
 
                                 <el-form-item label="软件账号" prop="description">
 
-                                    <el-input v-model="formData.description"/></el-input>
+                                    <el-input v-model="formData.description" type="textarea"></el-input>
 
                                 </el-form-item>
 
                             </el-col>
 
-                        </el-row>
-                        <el-row>
-
-                            <el-col :span="9">
+                            <el-col :span="7">
 
                                 <el-form-item label="微信备注" prop="aa">
 
-                                    <el-input v-model="formData.aa"/></el-input>
+                                    <el-input v-model="formData.aa"></el-input>
 
                                 </el-form-item>
 
                             </el-col>
 
-                        </el-row>
 
-                        <el-row>
-
-                            <el-col :span="9">
+                            <el-col :span="7">
 
                                 <el-form-item label="商品id" prop="bd">
 
-                                    <el-input v-model="formData.bd"/></el-input>
+                                    <el-input v-model="formData.bd"></el-input>
 
                                 </el-form-item>
 
                             </el-col>
 
-                        </el-row>
 
-                        <el-row>
-
-                            <el-col :span="9">
+                            <el-col :span="7">
 
                                 <el-form-item label="商品链接" prop="ac">
 
-                                    <el-input v-model="formData.ac"/></el-input>
+                                    <el-input v-model="formData.ac"></el-input>
 
                                 </el-form-item>
 
                             </el-col>
 
-                        </el-row>
-
-                        <el-row>
-
-                            <el-col :span="9">
+                            <el-col :span="7">
 
                                 <el-form-item label="商品图片" prop="ab">
 
-                                    <el-input v-model="formData.ab"/></el-input>
+                                    <el-input v-model="formData.ab"></el-input>
 
                                 </el-form-item>
 
                             </el-col>
 
-                        </el-row>
 
-                        <el-row>
-
-                            <el-col :span="9">
+                            <el-col :span="7">
 
                                 <el-form-item label="商品标题" prop="ax">
 
-                                    <el-input v-model="formData.ax"/></el-input>
+                                    <el-input v-model="formData.ax"></el-input>
 
                                 </el-form-item>
 
@@ -238,7 +218,7 @@
 
                         <el-row>
 
-                            <el-col :span="9">
+                            <el-col :span="12">
 
                                 <el-form-item label="分销软件" prop="name">
 
@@ -248,7 +228,7 @@
 
                             </el-col>
 
-                            <el-col :span="9">
+                            <el-col :span="12">
 
                                 <el-form-item label="商品名称" prop="type">
 
@@ -262,7 +242,7 @@
 
                         <el-row>
 
-                            <el-col :span="9">
+                            <el-col :span="12">
 
                                 <el-form-item label="软件账号">
 
@@ -360,7 +340,7 @@
             //添加
             handleAdd () {
                 //发送Ajax请求
-                axios.post("https://te.zssmh.asia/maven/books/",this.formData).then((res)=>{
+                axios.post("https://tiamo-zeng.github.io/maven/books/",this.formData).then((res)=>{
                     console.log(res.data);
                     //如果操作成功，关闭弹层
                     if(res.data.code==20011){
@@ -383,7 +363,7 @@
             handleUpdate(row) {
                 //console.log(row);  //row.id 查询条件
                 //查询数据，更具id查询
-                axios.get("https://te.zssmh.asia/maven/books/"+row.id).then((res)=>{
+                axios.get("https://tiamo-zeng.github.io/maven/books/"+row.id).then((res)=>{
                     //console.log(res.data.data);
                     if(res.data.code==20041){
                         //展示弹层，加载数据
@@ -398,7 +378,7 @@
             //编辑
             handleEdit() {
                 //发送put请求
-                axios.put("https://te.zssmh.asia/maven/books/",this.formData).then((res)=>{
+                axios.put("https://tiamo-zeng.github.io/maven/books/",this.formData).then((res)=>{
                     //如果操作成功，关闭弹层
                     if(res.data.code==20031){
                         this.dialogFormVisible4Edit=false;
