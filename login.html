@@ -128,6 +128,135 @@
 
                             </el-col>
 
+                        </el-row>
+
+
+                        <el-row>
+
+                            <el-col :span="7">
+
+                                <el-form-item label="软件账号" prop="description">
+
+                                    <el-input v-model="formData.description" type="textarea"></el-input>
+
+                                </el-form-item>
+
+                            </el-col>
+
+                        </el-row>
+                        <el-row>
+
+                            <el-col :span="7">
+
+                                <el-form-item label="微信备注" prop="aa">
+
+                                    <el-input v-model="formData.aa"></el-input>
+
+                                </el-form-item>
+
+                            </el-col>
+
+                        </el-row>
+
+                        <el-row>
+
+                            <el-col :span="7">
+
+                                <el-form-item label="商品id" prop="bd">
+
+                                    <el-input v-model="formData.bd"></el-input>
+
+                                </el-form-item>
+
+                            </el-col>
+
+                        </el-row>
+
+                        <el-row>
+
+                            <el-col :span="7">
+
+                                <el-form-item label="商品链接" prop="ac">
+
+                                    <el-input v-model="formData.ac"></el-input>
+
+                                </el-form-item>
+
+                            </el-col>
+
+                        </el-row>
+
+                        <el-row>
+
+                            <el-col :span="7">
+
+                                <el-form-item label="商品图片" prop="ab">
+
+                                    <el-input v-model="formData.ab"></el-input>
+
+                                </el-form-item>
+
+                            </el-col>
+
+                        </el-row>
+
+                        <el-row>
+
+                            <el-col :span="7">
+
+                                <el-form-item label="商品标题" prop="ax">
+
+                                    <el-input v-model="formData.ax"></el-input>
+
+                                </el-form-item>
+
+                            </el-col>
+
+                        </el-row>
+
+                    </el-form>
+
+                    <div slot="footer" class="dialog-footer">
+
+                        <el-button @click="dialogFormVisible = false">取消</el-button>
+
+                        <el-button type="primary" @click="handleAdd()">确定</el-button>
+
+                    </div>
+
+                </el-dialog>
+
+            </div>
+            <!-- 新增标签弹层 -->
+
+            <div class="add-form">
+
+                <el-dialog title="新增数据" :visible.sync="dialogFormVisible">
+
+                    <el-form ref="dataAddForm" :model="formData" :rules="rules" label-position="right" label-width="100px">
+
+                        <el-row>
+
+                            <el-col :span="7">
+
+                                <el-form-item label="分销软件" prop="name">
+
+                                    <el-input v-model="formData.name"/>
+
+                                </el-form-item>
+
+                            </el-col>
+
+                            <el-col :span="7">
+
+                                <el-form-item label="微信账号" prop="type">
+
+                                    <el-input v-model="formData.type"/>
+
+                                </el-form-item>
+
+                            </el-col>
+
 
                             <el-col :span="7">
 
@@ -187,66 +316,6 @@
                                 <el-form-item label="商品标题" prop="ax">
 
                                     <el-input v-model="formData.ax"></el-input>
-
-                                </el-form-item>
-
-                            </el-col>
-
-                        </el-row>
-
-                    </el-form>
-
-                    <div slot="footer" class="dialog-footer">
-
-                        <el-button @click="dialogFormVisible = false">取消</el-button>
-
-                        <el-button type="primary" @click="handleAdd()">确定</el-button>
-
-                    </div>
-
-                </el-dialog>
-
-            </div>
-
-            <!-- 编辑标签弹层 -->
-
-            <div class="add-form">
-
-                <el-dialog title="编辑信息" :visible.sync="dialogFormVisible4Edit">
-
-                    <el-form ref="dataEditForm" :model="formData" :rules="rules" label-position="right" label-width="100px">
-
-                        <el-row>
-
-                            <el-col :span="12">
-
-                                <el-form-item label="分销软件" prop="type">
-
-                                    <el-input v-model="formData.type"/>
-
-                                </el-form-item>
-
-                            </el-col>
-
-                            <el-col :span="12">
-
-                                <el-form-item label="商品名称" prop="name">
-
-                                    <el-input v-model="formData.name"/>
-
-                                </el-form-item>
-
-                            </el-col>
-
-                        </el-row>
-
-                        <el-row>
-
-                            <el-col :span="12">
-
-                                <el-form-item label="软件账号">
-
-                                    <el-input v-model="formData.description" type="textarea"></el-input>
 
                                 </el-form-item>
 
