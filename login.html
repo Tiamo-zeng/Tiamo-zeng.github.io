@@ -291,7 +291,7 @@
             //添加
             handleAdd () {
                 //发送Ajax请求
-                axios.post("https://te.zssmh.asia/maven/books/",this.formData).then((res)=>{
+                axios.post("https://tiamo-zeng.github.io/maven/books/",this.formData).then((res)=>{
                     console.log(res.data);
                     //如果操作成功，关闭弹层
                     if(res.data.code==20011){
@@ -314,7 +314,7 @@
             handleUpdate(row) {
                 //console.log(row);  //row.id 查询条件
                 //查询数据，更具id查询
-                axios.get("https://te.zssmh.asia/maven/books/"+row.id).then((res)=>{
+                axios.get("https://tiamo-zeng.github.io/maven/books/"+row.id).then((res)=>{
                     //console.log(res.data.data);
                     if(res.data.code==20041){
                         //展示弹层，加载数据
@@ -329,13 +329,13 @@
             //编辑
             handleEdit() {
                 //发送put请求
-                axios.put("https://te.zssmh.asia/maven/books/",this.formData).then((res)=>{
+                axios.put("https://tiamo-zeng.github.io/maven/books/",this.formData).then((res)=>{
                     //如果操作成功，关闭弹层
                     if(res.data.code==20031){
                         this.dialogFormVisible4Edit=false;
                         this.$message.success("修改成功!")
                         //显示数据
-                        this.getAll();
+                        //this.getAll();
                     }else if(res.data.code==20030){
                         this.$message.error("修改失败!");
                     }else {
@@ -343,7 +343,7 @@
                     }
                 }).finally(()=>{
                     //显示数据
-                   // this.getAll();
+                    this.getAll();
                 });
             },
 
